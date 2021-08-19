@@ -47,7 +47,7 @@ Aioeagle does not specify any timeouts for any requests. You will need to specif
 import async_timeout
 
 with async_timeout.timeout(10):
-    await bridge.initialize()
+    devices = await hub.get_device_list()
 ```
 
 ## Contribution guidelines
