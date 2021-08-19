@@ -14,7 +14,7 @@ async def main():
 
 async def run(websession):
     if len(sys.argv) < 3:
-        print(f"Usage: {sys.argv[0]} <cloud_id> <install_code>")
+        print(f"Usage: {sys.argv[0]} <cloud_id> <install_code> [ip_address]")
         return
 
     kwargs = {}
