@@ -25,7 +25,7 @@ jobs:
           pip install -r requirements-test.txt
       - name: Lint with flake8
         run: |
-          flake8 aiohue
+          flake8 aioeagle
       - name: Check formatting with black
         run: |
-          black aiohue --check
+          black aioeagle --check
