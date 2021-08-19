@@ -1,6 +1,3 @@
-from dicttoxml import dicttoxml as dicttoxml_orig
-
-
 def xmltodict_ensure_list(value, key):
     """Make sure response is a list
 
@@ -18,7 +15,7 @@ def xmltodict_ensure_list(value, key):
     return [value]
 
 
-def create_command(command, extra_data={}, dicttoxml_args={}):
+def create_command(command, extra_data={}):
     """Create a basic command string
 
     This is used to create a command string that can be used
@@ -31,9 +28,14 @@ def create_command(command, extra_data={}, dicttoxml_args={}):
                 **extra_data,
             },
         },
-        **dicttoxml_args,
     )
 
 
-def dicttoxml(value, **kwargs):
-    return dicttoxml_orig(value, root=False, attr_type=False, **kwargs)
+def dicttoxml(value):
+    if isinstance(value, dict):
+        return "".join(f"<{key}>{dicttoxml(val)}</{key}>" for key, val in value.items())
+
+    if isinstance(value, list):
+        return "".join(dicttoxml(val) for val in value)
+
+    return value

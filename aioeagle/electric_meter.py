@@ -5,7 +5,7 @@ class ElectricMeter:
     """Represent an electric meter.
 
     {'ConnectionStatus': 'Connected',
-      'HardwareAddress': '0x00078100023076c8',
+      'HardwareAddress': '0x00abcd123',
       'LastContact': '0x611d885a',
       'Manufacturer': 'Generic',
       'ModelId': 'electric_meter',
@@ -14,11 +14,23 @@ class ElectricMeter:
       'Protocol': 'Zigbee'}
     """
 
+    # Bug in the API is causing CurrentSummationDelivered not
+    # to be returned. So just fetch all (default behavior)
     ENERGY_AND_POWER_VARIABLES = [
         "zigbee:InstantaneousDemand",
         "zigbee:CurrentSummationDelivered",
         "zigbee:CurrentSummationReceived",
     ]
+
+    @classmethod
+    def create_instance(cls, hub, hardware_address):
+        """Create a new electric meter."""
+        return cls(
+            {
+                "HardwareAddress": hardware_address,
+            },
+            hub.make_request,
+        )
 
     def __init__(self, details, make_request):
         """Initialize the electric meter."""
@@ -62,12 +74,11 @@ class ElectricMeter:
     def protocol(self) -> str:
         return self.details["Protocol"]
 
-    def create_command(self, command, extra_data={}, dicttoxml_args={}):
+    def create_command(self, command, extra_data={}):
         """Create command targeting this device."""
         return create_command(
             command,
             {"DeviceDetails": {"HardwareAddress": self.hardware_address}, **extra_data},
-            dicttoxml_args,
         )
 
     async def get_device_details(self):
@@ -86,14 +97,13 @@ class ElectricMeter:
             components = {
                 "Component": {
                     "Name": "Main",
-                    "Variables": [{"Name": var} for var in variables],
+                    "Variables": [{"Variable": {"Name": var}} for var in variables],
                 }
             }
         data = await self.make_request(
             self.create_command(
                 "device_query",
                 {"Components": components},
-                {"item_func": lambda _: "Variable"},
             )
         )
         self.details = data["Device"]["DeviceDetails"]

@@ -17,7 +17,12 @@ async def run(websession):
         print(f"Usage: {sys.argv[0]} <cloud_id> <install_code>")
         return
 
-    hub = EagleHub(websession, sys.argv[1], sys.argv[2])
+    kwargs = {}
+
+    if len(sys.argv) > 3:
+        kwargs["host"] = sys.argv[3]
+
+    hub = EagleHub(websession, sys.argv[1], sys.argv[2], **kwargs)
 
     devices = await hub.get_device_list()
 
@@ -29,7 +34,7 @@ async def run(websession):
 
     pprint(device.details)
     print()
-    pprint(await device.get_device_query(device.ENERGY_AND_POWER_VARIABLES))
+    pprint(await device.get_device_query())
 
 
 try:
