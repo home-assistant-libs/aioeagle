@@ -39,6 +39,12 @@ async def run(websession):
 asyncio.run(main())
 ```
 
+## Testing locally
+
+```bash
+python3 example.py <cloud_id> <install_code>
+```
+
 ## Timeouts
 
 Aioeagle does not specify any timeouts for any requests. You will need to specify them in your own code. We recommend the `async_timeout` package:
