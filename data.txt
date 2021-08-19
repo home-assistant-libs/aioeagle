@@ -1,0 +1,241 @@
+{'zigbee:Block1Threshold': {'Description': 'the block threshold values for a '
+                                           'given period (typically the '
+                                           'billing cycle)',
+                            'Name': 'zigbee:Block1Threshold',
+                            'Units': 'kWh',
+                            'Value': None},
+ 'zigbee:Block2Threshold': {'Description': 'the block threshold values for a '
+                                           'given period (typically the '
+                                           'billing cycle)',
+                            'Name': 'zigbee:Block2Threshold',
+                            'Units': 'kWh',
+                            'Value': None},
+ 'zigbee:Block3Threshold': {'Description': 'the block threshold values for a '
+                                           'given period (typically the '
+                                           'billing cycle)',
+                            'Name': 'zigbee:Block3Threshold',
+                            'Units': 'kWh',
+                            'Value': None},
+ 'zigbee:Block4Threshold': {'Description': 'the block threshold values for a '
+                                           'given period (typically the '
+                                           'billing cycle)',
+                            'Name': 'zigbee:Block4Threshold',
+                            'Units': 'kWh',
+                            'Value': None},
+ 'zigbee:Block5Threshold': {'Description': 'the block threshold values for a '
+                                           'given period (typically the '
+                                           'billing cycle)',
+                            'Name': 'zigbee:Block5Threshold',
+                            'Units': 'kWh',
+                            'Value': None},
+ 'zigbee:Block6Threshold': {'Description': 'the block threshold values for a '
+                                           'given period (typically the '
+                                           'billing cycle)',
+                            'Name': 'zigbee:Block6Threshold',
+                            'Units': 'kWh',
+                            'Value': None},
+ 'zigbee:Block7Threshold': {'Description': 'the block threshold values for a '
+                                           'given period (typically the '
+                                           'billing cycle)',
+                            'Name': 'zigbee:Block7Threshold',
+                            'Units': 'kWh',
+                            'Value': None},
+ 'zigbee:Block8Threshold': {'Description': 'the block threshold values for a '
+                                           'given period (typically the '
+                                           'billing cycle)',
+                            'Name': 'zigbee:Block8Threshold',
+                            'Units': 'kWh',
+                            'Value': None},
+ 'zigbee:BlockPeriodDuration': {'Description': 'The current block tariff '
+                                               'period duration in minutes',
+                                'Name': 'zigbee:BlockPeriodDuration',
+                                'Units': 'min',
+                                'Value': '0'},
+ 'zigbee:BlockPeriodNumberOfBlocks': {'Description': None,
+                                      'Name': 'zigbee:BlockPeriodNumberOfBlocks',
+                                      'Units': None,
+                                      'Value': '0'},
+ 'zigbee:CurrentBillingPeriodDuration': {'Description': 'The current billing '
+                                                        'period duration in '
+                                                        'minutes',
+                                         'Name': 'zigbee:CurrentBillingPeriodDuration',
+                                         'Units': 'min',
+                                         'Value': '60215213'},
+ 'zigbee:CurrentBillingPeriodStart': {'Description': 'The start time of the '
+                                                     'current billing period',
+                                      'Name': 'zigbee:CurrentBillingPeriodStart',
+                                      'Units': None,
+                                      'Value': '1628739302'},
+ 'zigbee:CurrentBlockPeriodConsumptionDelivered': {'Description': 'The most '
+                                                                  'recent '
+                                                                  'summed '
+                                                                  'value of '
+                                                                  'Energy, Gas '
+                                                                  'or Water '
+                                                                  'delivered '
+                                                                  'and '
+                                                                  'consumed in '
+                                                                  'the '
+                                                                  'premises '
+                                                                  'during the '
+                                                                  'Block '
+                                                                  'Tariff '
+                                                                  'Period',
+                                                   'Name': 'zigbee:CurrentBlockPeriodConsumptionDelivered',
+                                                   'Units': 'kWh',
+                                                   'Value': '0.000000'},
+ 'zigbee:CurrentSummationDelivered': {'Description': 'Summation Delivered to '
+                                                     'Home',
+                                      'Name': 'zigbee:CurrentSummationDelivered',
+                                      'Units': 'kWh',
+                                      'Value': '2853.662000'},
+ 'zigbee:CurrentSummationReceived': {'Description': 'Summation Recieved from '
+                                                    'Home',
+                                     'Name': 'zigbee:CurrentSummationReceived',
+                                     'Units': 'kWh',
+                                     'Value': '0.000000'},
+ 'zigbee:Divisor': {'Description': 'Divisor applied to demand and summation '
+                                   'values',
+                    'Name': 'zigbee:Divisor',
+                    'Units': None,
+                    'Value': '1000'},
+ 'zigbee:InstantaneousDemand': {'Description': 'Instantaneous Demand',
+                                'Name': 'zigbee:InstantaneousDemand',
+                                'Units': 'kW',
+                                'Value': '1.965000'},
+ 'zigbee:Message': {'Description': 'Message from utility to customer',
+                    'Name': 'zigbee:Message',
+                    'Units': None,
+                    'Value': None},
+ 'zigbee:MessageConfirmationRequired': {'Description': 'Indicates if the '
+                                                       'message requires user '
+                                                       'confirmation',
+                                        'Name': 'zigbee:MessageConfirmationRequired',
+                                        'Units': None,
+                                        'Value': 'false'},
+ 'zigbee:MessageConfirmed': {'Description': 'Indicates if the message has '
+                                            'received user confirmation',
+                             'Name': 'zigbee:MessageConfirmed',
+                             'Units': None,
+                             'Value': 'false'},
+ 'zigbee:MessageDurationInMinutes': {'Description': 'Duration of current price',
+                                     'Name': 'zigbee:MessageDurationInMinutes',
+                                     'Units': 'min',
+                                     'Value': None},
+ 'zigbee:MessageId': {'Description': 'Message unique ID',
+                      'Name': 'zigbee:MessageId',
+                      'Units': None,
+                      'Value': None},
+ 'zigbee:MessagePriority': {'Description': 'Message priority',
+                            'Name': 'zigbee:MessagePriority',
+                            'Units': None,
+                            'Value': None},
+ 'zigbee:MessageStartTime': {'Description': 'Start time for current message',
+                             'Name': 'zigbee:MessageStartTime',
+                             'Units': None,
+                             'Value': None},
+ 'zigbee:Multiplier': {'Description': 'Multiplier applied to demand and '
+                                      'summation values',
+                       'Name': 'zigbee:Multiplier',
+                       'Units': None,
+                       'Value': '1'},
+ 'zigbee:NoTierBlock1Price': {'Description': 'The price of Energy, Gas, or '
+                                             'Water delivered to the premises '
+                                             'at a specific price tier',
+                              'Name': 'zigbee:NoTierBlock1Price',
+                              'Units': 'USD/kWh',
+                              'Value': None},
+ 'zigbee:NoTierBlock2Price': {'Description': 'The price of Energy, Gas, or '
+                                             'Water delivered to the premises '
+                                             'at a specific price tier',
+                              'Name': 'zigbee:NoTierBlock2Price',
+                              'Units': 'USD/kWh',
+                              'Value': None},
+ 'zigbee:NoTierBlock3Price': {'Description': 'The price of Energy, Gas, or '
+                                             'Water delivered to the premises '
+                                             'at a specific price tier',
+                              'Name': 'zigbee:NoTierBlock3Price',
+                              'Units': 'USD/kWh',
+                              'Value': None},
+ 'zigbee:NoTierBlock4Price': {'Description': 'The price of Energy, Gas, or '
+                                             'Water delivered to the premises '
+                                             'at a specific price tier',
+                              'Name': 'zigbee:NoTierBlock4Price',
+                              'Units': 'USD/kWh',
+                              'Value': None},
+ 'zigbee:NoTierBlock5Price': {'Description': 'The price of Energy, Gas, or '
+                                             'Water delivered to the premises '
+                                             'at a specific price tier',
+                              'Name': 'zigbee:NoTierBlock5Price',
+                              'Units': 'USD/kWh',
+                              'Value': None},
+ 'zigbee:NoTierBlock6Price': {'Description': 'The price of Energy, Gas, or '
+                                             'Water delivered to the premises '
+                                             'at a specific price tier',
+                              'Name': 'zigbee:NoTierBlock6Price',
+                              'Units': 'USD/kWh',
+                              'Value': None},
+ 'zigbee:NoTierBlock7Price': {'Description': 'The price of Energy, Gas, or '
+                                             'Water delivered to the premises '
+                                             'at a specific price tier',
+                              'Name': 'zigbee:NoTierBlock7Price',
+                              'Units': 'USD/kWh',
+                              'Value': None},
+ 'zigbee:NoTierBlock8Price': {'Description': 'The price of Energy, Gas, or '
+                                             'Water delivered to the premises '
+                                             'at a specific price tier',
+                              'Name': 'zigbee:NoTierBlock8Price',
+                              'Units': 'USD/kWh',
+                              'Value': None},
+ 'zigbee:Price': {'Description': 'Price of electricity',
+                  'Name': 'zigbee:Price',
+                  'Units': None,
+                  'Value': 'invalid'},
+ 'zigbee:PriceCurrency': {'Description': 'The local unit of currency used in '
+                                         'the price field',
+                          'Name': 'zigbee:PriceCurrency',
+                          'Units': None,
+                          'Value': 'USD'},
+ 'zigbee:PriceDuration': {'Description': 'Amount of time in minutes after the '
+                                         'Start Time during which the price '
+                                         'signal is valid',
+                          'Name': 'zigbee:PriceDuration',
+                          'Units': 'min',
+                          'Value': '0'},
+ 'zigbee:PriceRateLabel': {'Description': 'Active priuce rate label',
+                           'Name': 'zigbee:PriceRateLabel',
+                           'Units': None,
+                           'Value': None},
+ 'zigbee:PriceStartTime': {'Description': 'The time at which the price signal '
+                                          'becomes valid',
+                           'Name': 'zigbee:PriceStartTime',
+                           'Units': None,
+                           'Value': '946684800'},
+ 'zigbee:PriceTier': {'Description': 'The current Price Tier',
+                      'Name': 'zigbee:PriceTier',
+                      'Units': None,
+                      'Value': '0'},
+ 'zigbee:PriceTrailingDigits': {'Description': 'Indicates the number of digits '
+                                               'to the right of the decimal '
+                                               'point',
+                                'Name': 'zigbee:PriceTrailingDigits',
+                                'Units': None,
+                                'Value': '255'},
+ 'zigbee:StartOfBlockPeriod': {'Description': 'The start time of the current '
+                                              'block tariff period',
+                               'Name': 'zigbee:StartOfBlockPeriod',
+                               'Units': None,
+                               'Value': '946684800'},
+ 'zigbee:ThresholdDivisor': {'Description': 'Provides a value to divide the '
+                                            'result of applying the threshold '
+                                            'multiplier attribute to Block '
+                                            'Threshold values',
+                             'Name': 'zigbee:ThresholdDivisor',
+                             'Units': None,
+                             'Value': '1'},
+ 'zigbee:ThresholdMultiplier': {'Description': 'Provides a value to be '
+                                               'multiplied against Threshold '
+                                               'attributes',
+                                'Name': 'zigbee:ThresholdMultiplier',
+                                'Units': None,
+                                'Value': '1'}}
