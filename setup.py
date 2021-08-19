@@ -5,7 +5,7 @@ long_description = open("README.md").read()
 
 setup(
     name="aioeagle",
-    version="1.0.0",
+    version="1.1.0",
     license="Apache License 2.0",
     url="https://github.com/home-assistant-libs/aioeagle",
     author="Paulus Schoutsen",
