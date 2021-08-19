@@ -9,7 +9,7 @@ import asyncio
 from pprint import pprint
 
 import aiohttp
-from aioeagle.discovery import discover_nupnp
+from aioeagle import EagleHub
 
 
 CLOUD_ID = "123456"
