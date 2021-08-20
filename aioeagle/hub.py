@@ -42,10 +42,14 @@ class EagleHub:
         """Make a request."""
         wait_time = self.next_request - time()
         if wait_time > 0:
+            _LOGGER.debug("Sleeping %s", wait_time)
             await asyncio.sleep(wait_time)
 
+        url = f"http://{self.host}/cgi-bin/post_manager"
+        _LOGGER.debug("Sending to %s: %s", url, command_xml)
+
         async with self.session.post(
-            f"http://{self.host}/cgi-bin/post_manager",
+            url,
             auth=self.auth,
             headers={"content-type": "text/xml"},
             data=command_xml,

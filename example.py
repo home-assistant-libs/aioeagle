@@ -1,10 +1,14 @@
 import asyncio
 import sys
 from pprint import pprint
+import logging
 
 import aiohttp
 
 from aioeagle import EagleHub
+
+
+logging.basicConfig(level=logging.DEBUG)
 
 
 async def main():
