@@ -69,9 +69,9 @@ class EagleHub:
         result = []
 
         for device in xmltodict_ensure_list(response["DeviceList"], "Device"):
-            if device["ModelId"] == "electric_meter":
+            if device["ConnectionStatus"] == "Connected" and device["ModelId"] == "electric_meter":
                 result.append(ElectricMeter(device, self.make_request))
             else:
-                _LOGGER.debug(f"Skipping unknown device {device['ModelId']}")
+                _LOGGER.debug(f"Skipping unconnected or unknown device {device['ModelId']}")
 
         return result
