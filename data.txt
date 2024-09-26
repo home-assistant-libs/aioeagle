@@ -89,7 +89,7 @@
                                       'Name': 'zigbee:CurrentSummationDelivered',
                                       'Units': 'kWh',
                                       'Value': '2853.662000'},
- 'zigbee:CurrentSummationReceived': {'Description': 'Summation Recieved from '
+ 'zigbee:CurrentSummationReceived': {'Description': 'Summation Received from '
                                                     'Home',
                                      'Name': 'zigbee:CurrentSummationReceived',
                                      'Units': 'kWh',
