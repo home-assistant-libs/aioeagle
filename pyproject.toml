@@ -9,7 +9,7 @@ license = "Apache-2.0"
 description = "Python module to talk to Rainforest EAGLE-200."
 readme = "README.md"
 authors = [{ name = "Paulus Schoutsen", email = "paulus@paulusschoutsen.nl" }]
-requires-python = ">=3.9"
+requires-python = ">=3.10"
 classifiers = [
   "Intended Audience :: Developers",
   "Operating System :: OS Independent",
@@ -18,7 +18,7 @@ classifiers = [
   "Topic :: Software Development :: Libraries :: Python Modules",
 ]
 dependencies = [
-  "aiohttp",
+  "aiohttp>=3.14.0",
   "xmltodict",
 ]
 
