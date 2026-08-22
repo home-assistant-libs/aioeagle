@@ -6,7 +6,7 @@ import asyncio
 import logging
 from time import time
 
-from aiohttp import ClientSession, BasicAuth
+from aiohttp import ClientSession, encode_basic_auth
 import xmltodict
 
 from .electric_meter import ElectricMeter
@@ -36,7 +36,7 @@ class EagleHub:
         self.cloud_id = cloud_id
         self.install_code = install_code
         self.devices = []
-        self.auth = BasicAuth(cloud_id, install_code)
+        self.auth_header = encode_basic_auth(cloud_id, install_code)
         self.next_request = time()
 
     async def make_request(self, command_xml: str):
@@ -51,8 +51,10 @@ class EagleHub:
 
         async with self.session.post(
             url,
-            auth=self.auth,
-            headers={"content-type": "text/xml"},
+            headers={
+                "Authorization": self.auth_header,
+                "content-type": "text/xml",
+            },
             data=command_xml,
         ) as response:
             # Wait a second until the next request
