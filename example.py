@@ -18,13 +18,19 @@ async def main():
 
 async def run(websession):
     if len(sys.argv) < 3:
-        print(f"Usage: {sys.argv[0]} <cloud_id> <install_code> [ip_address]")
+        print(
+            f"Usage: {sys.argv[0]} <cloud_id> <install_code> [ip_address] [--https]"
+        )
         return
 
     kwargs = {}
 
-    if len(sys.argv) > 3:
-        kwargs["host"] = sys.argv[3]
+    for arg in sys.argv[3:]:
+        if arg == "--https":
+            kwargs["protocol"] = "https"
+            kwargs["ssl"] = False
+        elif not arg.startswith("--"):
+            kwargs["host"] = arg
 
     hub = EagleHub(websession, sys.argv[1], sys.argv[2], **kwargs)
 
