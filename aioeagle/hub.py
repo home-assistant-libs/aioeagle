@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import asyncio
 import logging
+import ssl as ssl_lib
 from time import time
 
 from aiohttp import ClientSession, encode_basic_auth
@@ -17,7 +18,7 @@ _LOGGER = logging.getLogger(__name__)
 
 
 class EagleHub:
-    """EAGLE-200 hub."""
+    """EAGLE-200 and EAGLE 3 hub."""
 
     def __init__(
         self,
@@ -26,6 +27,9 @@ class EagleHub:
         install_code: str,
         *,
         host: str | None = None,
+        protocol: str = "http",
+        port: int | None = None,
+        ssl: bool | ssl_lib.SSLContext | None = None,
     ) -> None:
         """Initialize hub."""
         self.session = session
@@ -35,6 +39,9 @@ class EagleHub:
             self.host = host
         self.cloud_id = cloud_id
         self.install_code = install_code
+        self.protocol = protocol
+        self.port = port or (443 if protocol == "https" else 80)
+        self.ssl = ssl
         self.devices = []
         self.auth_header = encode_basic_auth(cloud_id, install_code)
         self.next_request = time()
@@ -46,17 +53,26 @@ class EagleHub:
             _LOGGER.debug("Sleeping %s", wait_time)
             await asyncio.sleep(wait_time)
 
-        url = f"http://{self.host}/cgi-bin/post_manager"
+        port_suffix = (
+            f":{self.port}"
+            if (self.protocol == "http" and self.port != 80)
+            or (self.protocol == "https" and self.port != 443)
+            else ""
+        )
+        url = f"{self.protocol}://{self.host}{port_suffix}/cgi-bin/post_manager"
         _LOGGER.debug("Sending to %s: %s", url, command_xml)
 
-        async with self.session.post(
-            url,
-            headers={
+        post_kwargs = {
+            "headers": {
                 "Authorization": self.auth_header,
                 "content-type": "text/xml",
             },
-            data=command_xml,
-        ) as response:
+            "data": command_xml,
+        }
+        if self.ssl is not None:
+            post_kwargs["ssl"] = self.ssl
+
+        async with self.session.post(url, **post_kwargs) as response:
             # Wait a second until the next request
             self.next_request = time() + 1
 
