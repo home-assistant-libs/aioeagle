@@ -40,39 +40,39 @@ class ElectricMeter:
     @property
     def is_connected(self) -> bool:
         """Return connection status."""
-        return self.details["ConnectionStatus"] == "Connected"
+        return (self.details or {}).get("ConnectionStatus") == "Connected"
 
     @property
-    def connection_status(self) -> str:
-        return self.details["ConnectionStatus"]
+    def connection_status(self) -> str | None:
+        return (self.details or {}).get("ConnectionStatus")
 
     @property
-    def hardware_address(self) -> str:
-        return self.details["HardwareAddress"]
+    def hardware_address(self) -> str | None:
+        return (self.details or {}).get("HardwareAddress")
 
     @property
-    def last_contact(self) -> str:
-        return self.details["LastContact"]
+    def last_contact(self) -> str | None:
+        return (self.details or {}).get("LastContact")
 
     @property
-    def manufacturer(self) -> str:
-        return self.details["Manufacturer"]
+    def manufacturer(self) -> str | None:
+        return (self.details or {}).get("Manufacturer")
 
     @property
-    def model_id(self) -> str:
-        return self.details["ModelId"]
+    def model_id(self) -> str | None:
+        return (self.details or {}).get("ModelId")
 
     @property
-    def name(self) -> str:
-        return self.details["Name"]
+    def name(self) -> str | None:
+        return (self.details or {}).get("Name")
 
     @property
-    def network_address(self) -> str:
-        return self.details["NetworkAddress"]
+    def network_address(self) -> str | None:
+        return (self.details or {}).get("NetworkAddress")
 
     @property
-    def protocol(self) -> str:
-        return self.details["Protocol"]
+    def protocol(self) -> str | None:
+        return (self.details or {}).get("Protocol")
 
     def create_command(self, command, extra_data={}):
         """Create command targeting this device."""
@@ -87,7 +87,10 @@ class ElectricMeter:
                 "device_details",
             )
         )
-        return xmltodict_ensure_list(data["Device"]["Components"], "Component")
+        dev = (data or {}).get("Device") or {}
+        if "Components" not in dev or not dev["Components"]:
+            return []
+        return xmltodict_ensure_list(dev["Components"], "Component")
 
     async def get_device_query(self, variables=None):
         """Query data."""
@@ -106,16 +109,20 @@ class ElectricMeter:
                 {"Components": components},
             )
         )
-        self.details = data["Device"]["DeviceDetails"]
+        dev = (data or {}).get("Device") or {}
+        if isinstance(dev.get("DeviceDetails"), dict):
+            self.details = {**(self.details or {}), **dev["DeviceDetails"]}
 
         result = {}
-        for component in xmltodict_ensure_list(
-            data["Device"]["Components"], "Component"
-        ):
-            for variable in component["Variables"]["Variable"]:
+        if "Components" not in dev or not dev["Components"]:
+            return result
+        for component in xmltodict_ensure_list(dev["Components"], "Component"):
+            for variable in xmltodict_ensure_list(
+                (component or {}).get("Variables"), "Variable"
+            ):
                 result[variable["Name"]] = variable
 
         return result
 
     def __repr__(self) -> str:
-        return f"<ElectricMeter {self.details.get('Name', '')}>"
+        return f"<ElectricMeter {(self.details or {}).get('Name', '')}>"
